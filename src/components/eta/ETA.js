@@ -1,5 +1,4 @@
 import React from "react";
-import PropTypes from 'prop-types';
 import 'firebase/firestore';
 import 'firebase/functions';
 import {withRouter} from "react-router-dom";
@@ -11,21 +10,21 @@ class ETA extends React.Component {
     state = {};
 
     componentDidMount() {
-        const db = firebase.firestore();
-        db
+        // Listen for updates to the ETA
+        firebase.firestore()
             .collection('etas')
             .doc(this.props.match.params.id)
             .onSnapshot(doc => {
                 this.setState({data: doc.data()})
             });
-        firebase.functions().httpsCallable('updateETA')({id: this.props.match.params.id});
-        setInterval(() => {
-            firebase.functions().httpsCallable('updateETA')({id: this.props.match.params.id})
-        }, 65000)
+
+        // Trigger ETA updates in the server
+        const updateEta = () => firebase.functions().httpsCallable('updateETA')({id: this.props.match.params.id});
+        updateEta();
+        setInterval(updateEta, 65000)
     }
 
     render() {
-        // TODO Start querying distance API and display the correct information
         return <div className={styles.eta}>
             <span className={styles.metric}>
                 {
@@ -46,9 +45,5 @@ class ETA extends React.Component {
         </div>
     }
 }
-
-ETA.propTypes = {
-    app: PropTypes.any.isRequired
-};
 
 export default withRouter(ETA);
