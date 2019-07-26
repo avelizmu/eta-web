@@ -4,7 +4,7 @@ import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
 import ETA from "./components/eta/ETA";
 import firebase from 'firebase/app';
 import 'firebase/firestore';
-import {firebaseOptions} from '../config';
+import {firebaseOptions} from 'config';
 
 class App extends React.Component {
 
