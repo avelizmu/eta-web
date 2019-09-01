@@ -17,11 +17,6 @@ class ETA extends React.Component {
             .onSnapshot(doc => {
                 this.setState({data: doc.data()})
             });
-
-        // Trigger ETA updates in the server
-        const updateEta = () => firebase.functions().httpsCallable('updateETA')({id: this.props.match.params.id});
-        updateEta();
-        setInterval(updateEta, 65000)
     }
 
     render() {
