@@ -4,6 +4,7 @@ import 'firebase/functions';
 import {withRouter} from "react-router-dom";
 import * as firebase from "firebase";
 import styles from "./eta.module.css";
+import Changing from "../changing/Changing";
 
 class ETA extends React.Component {
 
@@ -24,22 +25,12 @@ class ETA extends React.Component {
 
     render() {
         return <div className={styles.eta}>
-            <span className={styles.metric}>
-                {
-                    ((this.state.data || {eta: {distance: '0 miles', time: '0 min'}}).eta || {
-                        distance: '0 miles',
-                        time: '0 min'
-                    }).time
-                }
-            </span>
-            <span className={styles.metric}>
-                {
-                    ((this.state.data || {eta: {distance: '0 miles', time: '0 min'}}).eta || {
-                        distance: '0 miles',
-                        time: '0 min'
-                    }).distance
-                }
-            </span>
+            <div className={styles.metric}>
+                <Changing value={this.state.time}/>
+            </div>
+            <div className={styles.metric}>
+                <Changing value={this.state.distance}/>
+            </div>
         </div>
     }
 }
