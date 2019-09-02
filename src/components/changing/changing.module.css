@@ -1,0 +1,28 @@
+.wrapper {
+    height: 40px;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+.changeable {
+    width: 100%;
+    color: white;
+    font-size: 25pt;
+    position: absolute;
+    top: 0;
+    transition: transform 0.3s ease-in-out;
+    text-align: center;
+}
+
+.rise {
+    transform: translateY(-40px)
+}
+
+.invisible {
+    color: transparent;
+}
+
+.fall {
+    transform: translateY(40px);
+}
