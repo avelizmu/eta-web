@@ -3,11 +3,14 @@ import 'firebase/firestore';
 import 'firebase/functions';
 import {withRouter} from "react-router-dom";
 import * as firebase from "firebase";
-import styles from './eta.module.css';
+import styles from "./eta.module.css";
 
 class ETA extends React.Component {
 
-    state = {};
+    state = {
+        time: 'unknown ',
+        distance: 'unknown '
+    };
 
     componentDidMount() {
         // Listen for updates to the ETA
@@ -15,7 +18,7 @@ class ETA extends React.Component {
             .collection('etas')
             .doc(this.props.match.params.id)
             .onSnapshot(doc => {
-                this.setState({data: doc.data()})
+                this.setState(doc.data().eta);
             });
     }
 
