@@ -61,8 +61,9 @@ class Changing extends React.Component {
      */
     updateValue() {
         const next = this.pending.shift();
-
-        if (next && this.state.step === 0) {
+        const currentValue = (!this.state.current ? this.state.first : this.state.second).value;
+        
+        if (next && currentValue !== next && this.state.step === 0) {
             this.setState((previousState, props) => {
                 const state = {...previousState};
                 const current = !state.current ? state.first : state.second;
