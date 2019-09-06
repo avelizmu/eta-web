@@ -27,3 +27,7 @@ yarn-error.log*
 *.iml
 
 config.json
+
+/.firebase
+.firebaserc
+firebase.json
