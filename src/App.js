@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
+import {BrowserRouter as Router, Redirect, Route, Switch} from "react-router-dom";
 import ETA from "./components/eta/ETA";
 import firebase from 'firebase/app';
 import 'firebase/firestore';
@@ -23,7 +23,10 @@ class App extends React.Component {
             <Router>
                 <Switch>
                     <Route exact path='/:id' render={() => <ETA app={this.state.app || {}}/>}/>
-                    <Route path='/'/>
+                    <Route exact path='/'/>
+                    <Route path='/'>
+                        <Redirect to={'/'}/>
+                    </Route>
                 </Switch>
             </Router>
         </div>
