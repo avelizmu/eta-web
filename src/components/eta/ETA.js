@@ -19,7 +19,15 @@ class ETA extends React.Component {
             .collection('etas')
             .doc(this.props.match.params.id)
             .onSnapshot(doc => {
-                this.setState(doc.data().eta);
+                const data = doc.data();
+                if (data !== undefined) {
+                    this.setState(data.eta);
+                } else {
+                    this.setState({
+                        time: 'unknown ',
+                        distance: 'unknown '
+                    })
+                }
             });
     }
 
