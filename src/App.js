@@ -5,6 +5,7 @@ import ETA from "./components/eta/ETA";
 import firebase from 'firebase/app';
 import 'firebase/firestore';
 import {firebaseOptions} from 'config';
+import Landing from "./components/landing/Landing";
 
 class App extends React.Component {
 
@@ -22,8 +23,8 @@ class App extends React.Component {
         return <div className="App">
             <Router>
                 <Switch>
-                    <Route exact path='/:id' render={() => <ETA app={this.state.app || {}}/>}/>
-                    <Route exact path='/'/>
+                    <Route exact path='/:id' component={ETA}/>
+                    <Route exact path='/' component={Landing}/>
                     <Route path='/'>
                         <Redirect to={'/'}/>
                     </Route>

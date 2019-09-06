@@ -1,0 +1,8 @@
+.landing {
+    height: 100%;
+    display: flex;
+    color: white;
+    font-size: 25pt;
+    justify-content: center;
+    flex-direction: column;
+}
