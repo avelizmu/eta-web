@@ -1,5 +1,5 @@
 # eta-web
-React website to get real-time ETA updates from someone using the ETA app.
+React website to get real-time ETA updates from someone using the [ETA app](https://github.com/aveliz1999/eta).
 
 The website is initialized with a firebase configuration from which it takes all its data.
 
